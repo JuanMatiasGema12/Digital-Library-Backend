@@ -8,6 +8,11 @@ import {
 } from 'typeorm';
 import { Review } from '../reviews/reviews.entity';
 
+export enum Role {
+  ADMIN = 'admin',
+  DEFAULT = 'default',
+}
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -21,6 +26,14 @@ export class User {
 
   @Column()
   password: string;
+
+  @Column({
+    type: 'enum',
+    enum: Role,
+    nullable: false,
+    default: Role.DEFAULT,
+  })
+  role: Role;
 
   @CreateDateColumn()
   createdAt: Date;

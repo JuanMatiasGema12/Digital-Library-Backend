@@ -12,24 +12,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RolesGuard = void 0;
 const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
+const role_decorator_1 = require("../../decorators/role.decorator");
 let RolesGuard = class RolesGuard {
     reflector;
     constructor(reflector) {
         this.reflector = reflector;
     }
     canActivate(context) {
-        const requiresRoles = this.reflector.getAllAndOverride('roles', [context.getHandler(), context.getClass()]);
-        if (!requiresRoles) {
+        const requiredRoles = this.reflector.get(role_decorator_1.ROLES_KEY, context.getHandler());
+        if (!requiredRoles) {
             return true;
         }
         const request = context.switchToHttp().getRequest();
         const user = request.user;
-        if (!user || !user.roles) {
-            throw new common_1.ForbiddenException('User not authenticated.');
+        if (!user || !user.role) {
+            throw new common_1.ForbiddenException('No roles found for user');
         }
-        const hasRole = requiresRoles.some((role) => user.roles.includes(role));
-        if (!hasRole) {
-            throw new common_1.ForbiddenException('You do not have permission to access this information.');
+        const hasRole = () => requiredRoles.some((role) => user.role.includes(role));
+        if (!hasRole()) {
+            throw new common_1.ForbiddenException('You do not have permission to access this resource');
         }
         return true;
     }

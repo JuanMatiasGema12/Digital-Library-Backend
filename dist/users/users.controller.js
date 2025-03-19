@@ -17,6 +17,9 @@ const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
 const loginUserDto_1 = require("../auth/dto/loginUserDto");
 const swagger_1 = require("@nestjs/swagger");
+const role_decorator_1 = require("../decorators/role.decorator");
+const users_entity_1 = require("./users.entity");
+const roles_guard_1 = require("../auth/guards/roles.guard");
 let UsersController = class UsersController {
     usersService;
     constructor(usersService) {
@@ -38,6 +41,8 @@ let UsersController = class UsersController {
 exports.UsersController = UsersController;
 __decorate([
     (0, swagger_1.ApiBearerAuth)(),
+    (0, role_decorator_1.Roles)(users_entity_1.Role.ADMIN),
+    (0, common_1.UseGuards)(roles_guard_1.RolesGuard),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
