@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDto, UpdateBookDto } from './dto/books.dto';
-import { Public } from 'src/auth/decorator';
+import { Public } from 'src/decorators/decorator';
 import { ApiBody, ApiOperation } from '@nestjs/swagger';
 
 @Controller('books')

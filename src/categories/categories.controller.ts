@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { CategoryService } from './categories.service';
 import { CreateCategoryDto, UpdateCategoryDto } from './dto/category.dto';
-import { Public } from 'src/auth/decorator';
+import { Public } from 'src/decorators/decorator';
 
 @Controller('category')
 export class CategoryController {

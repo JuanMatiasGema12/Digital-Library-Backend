@@ -16,7 +16,7 @@ exports.ReviewsController = void 0;
 const common_1 = require("@nestjs/common");
 const reviews_service_1 = require("./reviews.service");
 const reviews_dto_1 = require("./dto/reviews.dto");
-const decorator_1 = require("../auth/decorator");
+const decorator_1 = require("../decorators/decorator");
 let ReviewsController = class ReviewsController {
     reviewsService;
     constructor(reviewsService) {

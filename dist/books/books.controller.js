@@ -16,7 +16,7 @@ exports.BooksController = void 0;
 const common_1 = require("@nestjs/common");
 const books_service_1 = require("./books.service");
 const books_dto_1 = require("./dto/books.dto");
-const decorator_1 = require("../auth/decorator");
+const decorator_1 = require("../decorators/decorator");
 const swagger_1 = require("@nestjs/swagger");
 let BooksController = class BooksController {
     booksService;

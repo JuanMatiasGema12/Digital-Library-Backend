@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
 import { CreateReviewDto, UpdateReviewDto } from './dto/reviews.dto';
-import { Public } from 'src/auth/decorator';
+import { Public } from 'src/decorators/decorator';
 
 @Public()
 @Controller('reviews')

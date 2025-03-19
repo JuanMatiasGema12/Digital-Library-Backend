@@ -16,7 +16,7 @@ exports.CategoryController = void 0;
 const common_1 = require("@nestjs/common");
 const categories_service_1 = require("./categories.service");
 const category_dto_1 = require("./dto/category.dto");
-const decorator_1 = require("../auth/decorator");
+const decorator_1 = require("../decorators/decorator");
 let CategoryController = class CategoryController {
     categoryService;
     constructor(categoryService) {
